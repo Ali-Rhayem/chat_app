@@ -47,10 +47,14 @@ class _AuthScreenState extends State<AuthScreen> {
                             keyboardType: TextInputType.emailAddress,
                             autocorrect: false,
                             textCapitalization: TextCapitalization.none,
-                            validator: (value){
-                              if (value == null || value.trim().isEmpty || !value.contains('@')) {
+                            validator: (value) {
+                              if (value == null ||
+                                  value.trim().isEmpty ||
+                                  !value.contains('@')) {
                                 return 'Please enter a valid email address.';
                               }
+
+                              return null;
                             },
                           ),
                           TextFormField(
@@ -58,12 +62,22 @@ class _AuthScreenState extends State<AuthScreen> {
                               labelText: 'Password',
                             ),
                             obscureText: true,
+                            validator: (value) {
+                              if (value == null ||
+                                 value.trim().length < 6){
+                                return 'Password must be at least 6 characters long.';
+                              }
+
+                              return null;
+                            },
                           ),
                           const SizedBox(height: 12),
                           ElevatedButton(
                             onPressed: () {},
                             style: ElevatedButton.styleFrom(
-                              backgroundColor : Theme.of(context).colorScheme.primaryContainer,
+                              backgroundColor: Theme.of(context)
+                                  .colorScheme
+                                  .primaryContainer,
                             ),
                             child: Text(_isLogin ? 'Login' : 'Signup'),
                           ),

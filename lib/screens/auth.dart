@@ -47,6 +47,11 @@ class _AuthScreenState extends State<AuthScreen> {
                             keyboardType: TextInputType.emailAddress,
                             autocorrect: false,
                             textCapitalization: TextCapitalization.none,
+                            validator: (value){
+                              if (value == null || value.trim().isEmpty || !value.contains('@')) {
+                                return 'Please enter a valid email address.';
+                              }
+                            },
                           ),
                           TextFormField(
                             decoration: const InputDecoration(
@@ -57,6 +62,9 @@ class _AuthScreenState extends State<AuthScreen> {
                           const SizedBox(height: 12),
                           ElevatedButton(
                             onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor : Theme.of(context).colorScheme.primaryContainer,
+                            ),
                             child: Text(_isLogin ? 'Login' : 'Signup'),
                           ),
                           TextButton(

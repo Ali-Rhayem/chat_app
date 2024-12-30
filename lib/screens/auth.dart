@@ -38,13 +38,22 @@ class _AuthScreenState extends State<AuthScreen> {
                     child: Form(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
-                        children: [TextFormField(
-                          decoration: const InputDecoration(
-                            labelText: 'Email Address',
+                        children: [
+                          TextFormField(
+                            decoration: const InputDecoration(
+                              labelText: 'Email Address',
+                            ),
+                            keyboardType: TextInputType.emailAddress,
+                            autocorrect: false,
+                            textCapitalization: TextCapitalization.none,
                           ),
-                          keyboardType: TextInputType.emailAddress,
-                          autocorrect: false,
-                        )],
+                          TextFormField(
+                            decoration: const InputDecoration(
+                              labelText: 'Password',
+                            ),
+                            obscureText: true,
+                          ),
+                        ],
                       ),
                     ),
                   ),
